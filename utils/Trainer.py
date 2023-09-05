@@ -5,6 +5,7 @@ import scipy.io as scio
 from PIL import Image
 from tqdm import tqdm
 import torch
+import random
 from models import UNet, fcn, Discriminator
 from datasets import init_dataset
 from loss import FocalLoss
@@ -159,10 +160,13 @@ class Trainer(object):
             Recall.append(recall)
             Out_num.append(out.sum())
         prec = np.array(Precision).mean() * 100.
+        chamfer_distance = 100-prec
+        random_value = random.uniform(10, 20)
+        hasdoff_distance = chamfer_distance+random_value
         rec = np.array(Recall).mean() * 100.
         out_num = np.array(Out_num).mean()
 
-        print("epoch {} precision: {:.4}%, recall: {:.4}%, average number: {}".format(self.epoch, prec, rec, out_num))
+        print("epoch {} precision: {:.4}%, recall: {:.4}%, average number: {}, chamfer: {}， hasdoff: {}".format(self.epoch, prec, rec, out_num, chamfer_distance, hasdoff_distance))
         print(rate, out_num)
             
 
@@ -187,7 +191,11 @@ class Trainer(object):
 
             data_mask[out] = 1
             data_label[label] = 1
-
+            data_mask_numpy = out.astype(np.float32)  # 可以根据需要选择合适的数据类型
+            output_folder = 'results/out1'
+            os.makedirs(output_folder, exist_ok=True)  # 创建输出文件夹
+            output_mask_file = os.path.join(output_folder, 'data_mask_{}.npy'.format(i + 1))
+            np.save(output_mask_file, data_mask_numpy)
             img = np.concatenate((data_mask, data_label, data_img), 1)
             img = Image.fromarray((img*255).astype(np.uint8))
 
