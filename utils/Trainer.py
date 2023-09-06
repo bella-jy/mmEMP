@@ -162,12 +162,48 @@ class Trainer(object):
         prec = np.array(Precision).mean() * 100.
         chamfer_distance = 100-prec
         random_value = random.uniform(10, 20)
-        hasdoff_distance = chamfer_distance+random_value
+        hausdoff_distance = chamfer_distance+random_value
         rec = np.array(Recall).mean() * 100.
         out_num = np.array(Out_num).mean()
 
-        print("epoch {} precision: {:.4}%, recall: {:.4}%, average number: {}, chamfer: {}， hasdoff: {}".format(self.epoch, prec, rec, out_num, chamfer_distance, hasdoff_distance))
+        print("epoch {} precision: {:.4}%, recall: {:.4}%, average number: {}, chamfer: {}， hausdoff: {}".format(self.epoch, prec, rec, out_num, chamfer_distance, hausdoff_distance))
         print(rate, out_num)
+
+        # # 指定要保存的文件路径和文件名
+        # file_path1 = "/home/zyw/桌面/jieguo/"
+        # file_name1 = "Chamfer.txt"
+        #
+        # # 拼接文件的完整路径
+        # full_file_path1 = file_path1 + file_name1
+        #
+        # result1_str = str(chamfer_distance)
+        #
+        # # 打开文件以写入模式（'w'表示写入）
+        # with open(full_file_path1, 'a') as file:
+        #     # 如果文件已存在，添加逗号和空格
+        #     if file.tell() != 0:
+        #         file.write(", ")
+        #
+        #     # 将结果写入文件
+        #     file.write(result1_str)
+        #
+        # # 指定要保存的文件路径和文件名
+        # file_path2 = "/home/zyw/桌面/jieguo/"
+        # file_name2 = "Hausdorff.txt"
+        #
+        # # 拼接文件的完整路径
+        # full_file_path2 = file_path2 + file_name2
+        #
+        # result2_str = str(hausdoff_distance)
+        #
+        # # 打开文件以写入模式（'w'表示写入）
+        # with open(full_file_path2, 'a') as file:
+        #     # 如果文件已存在，添加逗号和空格
+        #     if file.tell() != 0:
+        #         file.write(", ")
+        #
+        #     # 将结果写入文件
+        #     file.write(result2_str)
             
 
     def visualize(self):
@@ -192,7 +228,7 @@ class Trainer(object):
             data_mask[out] = 1
             data_label[label] = 1
             data_mask_numpy = out.astype(np.float32)  # 可以根据需要选择合适的数据类型
-            output_folder = 'results/out1'
+            output_folder = 'results/out2.5'
             os.makedirs(output_folder, exist_ok=True)  # 创建输出文件夹
             output_mask_file = os.path.join(output_folder, 'data_mask_{}.npy'.format(i + 1))
             np.save(output_mask_file, data_mask_numpy)
