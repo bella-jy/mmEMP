@@ -14,6 +14,15 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 * Install CUDA 11.0
 * install cuDNN8.0
 * Install PyTorch1.7.0
+  ```
+  conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=11.0 -c pytorch
+  ```
+* Install PointNet++ library for basic point cloud operation
+  ```
+  cd lib
+  python setup.py install
+  cd ..
+  ```
 ## Getting started
 ### Train
 
