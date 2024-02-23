@@ -19,7 +19,7 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   ```
 * Install PointNet++ library for basic point cloud operation
   ```
-  cd lib
+  cd pose lib
   python setup.py install
   cd ..
   ```
