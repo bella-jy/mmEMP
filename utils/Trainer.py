@@ -204,7 +204,51 @@ class Trainer(object):
         #
         #     # 将结果写入文件
         #     file.write(result2_str)
-            
+
+    def WeightedKabsch(self, A, B, W):
+
+        assert A.size() == B.size()
+
+        batch_size, num_rows, num_cols = A.size()
+
+        ## mask to 0/1 weights for motive/static points
+        # W=W.type(torch.bool).unsqueeze(2)
+        W = W.unsqueeze(2)
+        # find mean column wise
+        centroid_A = torch.sum(A.transpose(2, 1).contiguous() * W, axis=1)
+        centroid_B = torch.sum(B.transpose(2, 1).contiguous() * W, axis=1)
+
+        # print(W.sum(axis=1))
+
+        # ensure centroids are 3x1
+        centroid_A = centroid_A.reshape(batch_size, num_rows, 1)
+        centroid_B = centroid_B.reshape(batch_size, num_rows, 1)
+
+        # subtract mean
+        Am = A - centroid_A
+        Bm = B - centroid_B
+
+        H = torch.matmul(Am, Bm.transpose(2, 1).contiguous() * W)
+
+        # find rotation
+        U, _, V = torch.svd(H)
+        Z = torch.matmul(V, U.transpose(2, 1).contiguous())
+        # special reflection case
+        d = (torch.linalg.det(Z) < 0).type(torch.int8)
+        # d = torch.zeros(batch_size).type(torch.int8).cuda()
+        # -1/1
+        d = d * 2 - 1
+        Vc = V.clone()
+        Vc[:, 2, :] *= -d.view(batch_size, 1)
+        R = torch.matmul(Vc, U.transpose(2, 1).contiguous())
+
+        t = torch.matmul(-R, centroid_A) + centroid_B
+
+        Trans = torch.cat(
+            (torch.cat((R, t), axis=2), torch.tensor([0, 0, 0, 1]).repeat(batch_size, 1).cuda().view(batch_size, 1, 4)),
+            axis=1)
+
+        return Trans
 
     def visualize(self):
         
@@ -287,6 +331,7 @@ class Trainer(object):
             self.optimizer.load_state_dict(checkpoint['optimizer_dict'])
         self.model.load_state_dict(checkpoint["state_dict"])
         self.epoch = checkpoint['epoch']
+
 
     def save_checkpoint(self):
 
