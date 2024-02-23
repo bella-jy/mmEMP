@@ -25,6 +25,11 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   ```
 ## Getting started
 ### Train
-
+  ```
+  python main.py train
+  ```
 ### Evaluation
+  ```
+  python main.py eval
+  ```
 ## Citation
