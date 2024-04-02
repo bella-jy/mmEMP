@@ -28,7 +28,7 @@ Download the dataset [Dataset](https://github.com/Toytiny/CMFlow).The dataset co
 * Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
 * After obtaining the three-dimensional coordinates of visual feature points, [RPDNet](https://github.com/thucyw/RPDNet) is run with these coordinates as supervisory signals to generate dense point clouds.
 * To eliminate radar ghost points, we refer to the [CMFlow](https://github.com/Toytiny/CMFlow) approach and obtain motion estimation results using dense point clouds as input.
-
+* Finally, run the ghost_eliminate.py file to compute the distance threshold and output the enhanced and filtered point clouds.
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
