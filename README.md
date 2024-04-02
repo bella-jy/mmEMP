@@ -22,7 +22,8 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   cd pose lib
   python setup.py install
   cd ..
-  ```
+## Dataset
+The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required.
 ## Getting started
 ### Train
   ```
