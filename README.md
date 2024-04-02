@@ -25,6 +25,9 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 ## Dataset
 The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required.
 ## Getting started
+* Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
+* Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.[链接文本]([链接URL](https://github.com/search?q=point+cloud+generation+lidar+language%3APython&type=repositories))
+
 ### Train
   ```
   python main.py train
