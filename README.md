@@ -27,7 +27,7 @@ The dataset comprises raw data from millimeter-wave radar, vision, and IMU, alon
 ## Getting started
 * Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
 * After obtaining the three-dimensional coordinates of visual feature points, [RPDNet](https://github.com/thucyw/RPDNet) is run with these coordinates as supervisory signals to generate dense point clouds.
-* To eliminate radar ghost points, we refer to the [CMflow](https://github.com/Toytiny/CMFlow) approach and obtain motion estimation results using dense point clouds as input.
+* To eliminate radar ghost points, we refer to the [CMFlow](https://github.com/Toytiny/CMFlow) approach and obtain motion estimation results using dense point clouds as input.
 
 ## Citation
 If you find our work useful in your research, please consider citing:
