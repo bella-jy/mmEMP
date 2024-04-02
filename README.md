@@ -26,14 +26,16 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required.
 ## Getting started
 * Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
-* Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.[链接URL](https://github.com/search?q=point+cloud+generation+lidar+language%3APython&type=repositories)
+* After obtaining the three-dimensional coordinates of visual feature points, [RPDNet](https://github.com/thucyw/RPDNet) is run with these coordinates as supervisory signals to generate dense point clouds.
+* To eliminate radar ghost points, we refer to the [CMflow](https://github.com/Toytiny/CMFlow) approach and obtain motion estimation results using dense point clouds as input.
 
-### Train
-  ```
-  python main.py train
-  ```
-### Evaluation
-  ```
-  python main.py eval
-  ```
 ## Citation
+If you find our work useful in your research, please consider citing:
+  ```
+@InProceedings{Fan_2024_ICRA,
+    author    = {Fan, Cong and Zhang, Shengkai and Liu, Kezhong and Wang, Shuai and Yang, Zheng and Wang, Wei},
+    title     = {Enhancing mmWave Radar Point Cloud via Visual-inertial Supervision},
+    booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+    year      = {2024},
+}
+  ```
