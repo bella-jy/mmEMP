@@ -4,6 +4,7 @@ This is the repository of the mmEMP. For technical details, please refer to our 
 **Enhancing mmWave Radar Point Cloud via Visual-inertial Supervision**
 
 Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
+<img width="920" alt="截屏2024-04-18 10 45 22" src="https://github.com/bella-jy/mmEMP/assets/74900308/b8608f57-1ea5-4135-89a3-c958b4267098">
 ## Prerequisites
 * Install Anaconda3
 * Install Python3.7
