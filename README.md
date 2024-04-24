@@ -24,7 +24,7 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   python setup.py install
   cd ..
 ## Dataset
-Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7).The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required.
+Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7).The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required. Execute the assign_timestamp.py script to achieve data synchronization.
 ## Getting started
 * Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
 * After obtaining the three-dimensional coordinates of visual feature points, [RPDNet](https://github.com/thucyw/RPDNet) is run with these coordinates as supervisory signals to generate dense point clouds.
