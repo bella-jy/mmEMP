@@ -8,16 +8,15 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 ## Prerequisites
 * Clone the repository to local
   ```
-  conda create -n $ENV_NAME$ python=3.7
-  source activate $ENV_NAME$
+  git clone https://github.com/bella-jy/mmEMP.git
   ```
 * Install Python3.7 with Anaconda3
   ```
   conda create -n $ENV_NAME$ python=3.7
   source activate $ENV_NAME$
   ```
-* Install CUDA 11.0
-* install cuDNN8.0
+* Install [CUDA 11.0](https://developer.nvidia.com/cuda-11.0-download-archive)
+* install [cuDNN8.0](https://developer.nvidia.com/cudnn)
 * Install PyTorch1.7.0
   ```
   conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=11.0 -c pytorch
@@ -28,12 +27,29 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   python setup.py install
   cd ..
 ## Dataset
-Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7).The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Due to variations in sampling frequencies among multimodal data, alignment procedures such as data synchronization are required. Execute the assign_timestamp.py script to achieve data synchronization.
+Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7).The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. 
 ## Getting started
-* Using consecutive visual images as input, execute dynamic_points.py to obtain static and dynamic visual feature points.
-* After obtaining the three-dimensional coordinates of visual feature points, [RPDNet](https://github.com/thucyw/RPDNet) is run with these coordinates as supervisory signals to generate dense point clouds.
-* To eliminate radar ghost points, we refer to the [CMFlow](https://github.com/Toytiny/CMFlow) approach and obtain motion estimation results using dense point clouds as input.
-* Finally, run the ghost_eliminate.py file to compute the distance threshold and output the enhanced and filtered point clouds.
+* Temporal alignment
+  ```
+  python assign_timestamp.py
+  ```
+* Using consecutive visual images as input to obtain static and dynamic visual feature points.
+  ```
+  python dynamic_points.py
+  ```
+* Generate dense point clouds.
+  ```
+  python main.py train
+  ```
+* Obtain motion estimation results using dense point clouds as input.
+  ```
+  cd pose
+  python main.py --eval --vis --dataset_path ./demo_data/ --exp_name
+  ```
+* Enhance and filter point clouds.
+  ```
+  python ghost_eliminate.py
+  ```
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
@@ -44,3 +60,7 @@ If you find our work useful in your research, please consider citing:
     year      = {2024},
 }
   ```
+## Acknowledgments
+This repository is based on the following codebases:
+* [RPDNet](https://github.com/thucyw/RPDNet)
+* [CMFlow](https://github.com/Toytiny/CMFlow)
