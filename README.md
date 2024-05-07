@@ -6,10 +6,6 @@ This is the repository of the mmEMP. For technical details, please refer to our 
 Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 <img width="920" alt="截屏2024-04-18 10 45 22" src="https://github.com/bella-jy/mmEMP/assets/74900308/b8608f57-1ea5-4135-89a3-c958b4267098">
 ## Prerequisites
-* Clone the repository to local
-  ```
-  git clone https://github.com/bella-jy/mmEMP.git
-  ```
 * Install Python3.7 with Anaconda3
   ```
   conda create -n $ENV_NAME$ python=3.7
@@ -29,6 +25,10 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
 ## Dataset
 Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. 
 ## Getting started
+* Clone the repository to local
+  ```
+  git clone https://github.com/bella-jy/mmEMP.git
+  ```
 * Temporal alignment
   ```
   python assign_timestamp.py
