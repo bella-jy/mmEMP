@@ -83,7 +83,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   ```
   python main.py --eval --dataset_path $DATA_PATH$ --exp_name cmflow_cvpr --model cmflow
   ```
-* Enhance and filter point clouds.
+* Enhance and filter point clouds
   ```
   python ghost_eliminate.py
   ```
