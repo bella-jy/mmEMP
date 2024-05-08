@@ -30,7 +30,10 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
     │   │── xyz
     │   │── doppler_reshape_256_64_192
     ├── rgb
+    │   │── infra1out
     ├── pose
+    │   │── vinsout
+    │   │── vinspointcloudout
   ```
 ## Getting started
 * Clone the repository to local
@@ -47,9 +50,16 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   python dynamic_points.py
   ```
   Place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`.
-* Generate dense point clouds.
+* Train
+  Train a model by
   ```
   python main.py train
+  ```
+  **In `config/base_confige.yml`, you might want to change the following settings: `data` root path of the dataset for training or testing, `batch_size` for traning
+* Eval
+  Evaluate the trained model by
+  ```
+  python main.py eval
   ```
 * Obtain motion estimation results using dense point clouds as input.
   ```
