@@ -65,7 +65,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   python main.py eval
   ```
 ### 4. Point cloud refinement
-* Place dense point clouds, vinsout, and infra1out into the 'pose/preprocess' folder and perform data preprocess
+* Place dense point clouds, vinsout, and infra1out into the `pose/preprocess` folder and perform data preprocess
   ```
   cd pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
