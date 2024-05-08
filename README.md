@@ -23,7 +23,15 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   python setup.py install
   cd ..
 ## Dataset
-Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. 
+Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: data/your_dataset. In the end, the dataset should be oragnized like this:
+  ```
+  Dataset
+    ├── radar
+    │   │── xyz
+    │   │── doppler_reshape_256_64_192
+    ├── rgb
+    ├── pose
+  ```
 ## Getting started
 * Clone the repository to local
   ```
@@ -31,12 +39,14 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   ```
 * Temporal alignment
   ```
+  cd data/your_dataset
   python assign_timestamp.py
   ```
-* Using consecutive visual images as input to obtain static and dynamic visual feature points.
+* Data preprocess
   ```
   python dynamic_points.py
   ```
+  
 * Generate dense point clouds.
   ```
   python main.py train
