@@ -63,10 +63,21 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   python main.py eval
   ```
 ### 4. Point cloud refinement
-* Obtain motion estimation results using dense point clouds as input.
+* Data preprocess
   ```
   cd pose
-  python main.py --eval --vis --dataset_path ./demo_data/ --exp_name
+  python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
+  ```
+* Train
+  Train a model by
+  ```
+  cd pose
+  python main.py --dataset_path $DATA_PATH$ --exp_name $EXP_NAME$ --model cmflow
+  ```
+* Eval
+  Evaluate the trained model by
+  ```
+  python main.py --eval --dataset_path $DATA_PATH$ --exp_name cmflow_cvpr --model cmflow
   ```
 * Enhance and filter point clouds.
   ```
