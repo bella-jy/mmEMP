@@ -36,16 +36,16 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
     │   │── vinspointcloudout
   ```
 ## Getting started
-* Clone the repository to local
+### 1. Clone the repository to local
   ```
   git clone https://github.com/bella-jy/mmEMP.git
   ```
-* Temporal alignment
+### 2. Temporal alignment
   ```
   cd data/your_dataset
   python assign_timestamp.py
   ```
-### Dynamic visual-inertial 3D reconstruction
+### 3. Dynamic visual-inertial 3D reconstruction
 * Data preprocess
   ```
   python dynamic_points.py
@@ -62,7 +62,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   ```
   python main.py eval
   ```
-### Point cloud refinement
+### 4. Point cloud refinement
 * Obtain motion estimation results using dense point clouds as input.
   ```
   cd pose
