@@ -52,12 +52,14 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   ```
   Place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`.
 * Train
+  
   Train a model by
   ```
   python main.py train
   ```
   In `config/base_confige.yml`, you might want to change the following settings: `data` root path of the dataset for training or testing, `batch_size` for traning
 * Eval
+  
   Evaluate the trained model by
   ```
   python main.py eval
