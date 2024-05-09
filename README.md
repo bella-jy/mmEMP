@@ -19,7 +19,7 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   ```
 * Install PointNet++ library for basic point cloud operation
   ```
-  cd pose lib
+  cd radar_pose lib
   python setup.py install
   cd ..
 ## Dataset
@@ -67,21 +67,21 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
 ### 4. Point cloud refinement
 * Place dense point clouds, vinsout, and infra1out into the `pose/preprocess` folder and perform data preprocess
   ```
-  cd pose
+  cd radar_pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
 * Train
   
   Train a model by
   ```
-  cd pose
+  cd radar_pose
   python main.py --dataset_path $DATA_PATH$ --exp_name $EXP_NAME$ --model cmflow
   ```
 * Eval
   
   Evaluate the trained model by
   ```
-  cd pose
+  cd radar_pose
   python main.py --eval --dataset_path $DATA_PATH$ --exp_name cmflow_cvpr --model cmflow
   ```
 * Enhance and filter point clouds
