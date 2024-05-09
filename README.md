@@ -23,7 +23,7 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   python setup.py install
   cd ..
 ## Dataset
-Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: `data/your_dataset`. In the end, the dataset should be oragnized like this:
+Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?pwd=n6g7). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: `data/dataset/your_dataset`. In the end, the dataset should be oragnized like this:
   ```
   Dataset
     ├── radar
@@ -42,8 +42,8 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1XzCi2qMr9bAJm0nxFiIMLg?p
   ```
 ### 2. Temporal alignment
   ```
-  cd data/your_dataset
-  python assign_timestamp.py
+  cd data/dataset/your_dataset
+  python temporal_allignment.py
   ```
 ### 3. Dynamic visual-inertial 3D reconstruction
 * Data preprocess
