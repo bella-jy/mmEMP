@@ -40,50 +40,43 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
 ## Getting started
 ### 1. Temporal alignment
+  The multi-modal data collected under the ROS system often suffers from asynchrony issues, necessitating alignment based on timestamps for effective integration.
   ```
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py
   ```
-### 2. Dynamic visual-inertial 3D reconstruction
-* Data preprocess
-  ```
+### 2. Dynamic visual-inertial 3D reconstruction, corresponds to Module 1 in this paper
+* ```
   python dynamic_points.py
   ```
   Place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
-* Train
-  
-  Train a model by
+### 3. Point cloud generation
+* Train a model by
   ```
   python main.py train
   ```
   In `config/base_confige.yml`, you might want to change the following settings: `data` root path of the dataset for training or testing, `batch_size` for traning
-* Eval
-  
-  Evaluate the trained model by
+* Acquire dense point cloud
   ```
   python main.py eval
   ```
-### 3. Point cloud refinement
-* Place dense point clouds, vinsout, and infra1out into the `pose/preprocess` folder and perform data preprocess
+### 4. Point cloud refinement, corresponds to Module 2 in this paper
+* Place dense point clouds, vinsout, and infra1out into the `radar_pose/preprocess` folder and perform data preprocess
   ```
   cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
-* Train
-  
-  Train a model by
+* Train a model by
   ```
   cd mmEMP/radar_pose
   python main.py --dataset_path $DATA_PATH$ --exp_name $EXP_NAME$ --model cmflow
   ```
-* Eval
-  
-  Evaluate the trained model by
+* Acquire radar pose
   ```
   cd mmEMP/radar_pose
   python main.py --eval --dataset_path $DATA_PATH$ --exp_name cmflow_cvpr --model cmflow
   ```
-* Enhance and filter point clouds
+* Enhance and filter point cloud
   ```
   python ghost_eliminate.py
   ```
