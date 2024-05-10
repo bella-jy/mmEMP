@@ -83,7 +83,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python ghost_eliminate.py
   ```
-  After running, the refined point cloud coordinates will be saved in the enhanced_points.txt.
+  After running, the refined point cloud coordinates will be saved in the `mmEMP/enhanced_points.txt`.
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
