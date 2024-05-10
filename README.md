@@ -40,7 +40,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
 ## Getting started
 ### 1. Temporal alignment
-  The multi-modal data collected under the ROS system often suffers from asynchrony issues, necessitating alignment based on timestamps for effective integration.
+  Due to the ambiguity in clock synchronization with ROS, we need to align the data based on timestamps.
   ```
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py
@@ -83,7 +83,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python ghost_eliminate.py
   ```
-  After running, the enhanced three-dimensional coordinates of the radar point cloud will be obtained, and saved in a specified folder in .txt format.
+  After running, the refined point cloud coordinates will be saved in the enhanced_points.txt.
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
