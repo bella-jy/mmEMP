@@ -1,8 +1,10 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 def read_point_cloud(file_path):
     """
-    read
+    Read point cloud data from a text file.
     """
     points = []
     with open(file_path, 'r') as file:
@@ -14,7 +16,7 @@ def read_point_cloud(file_path):
 
 def compute_average_velocity(points, t):
     """
-    velocity
+    Compute the average velocity of points over time.
     """
     displacement = np.linalg.norm(points[1:] - points[:-1], axis=1)
     average_velocity = np.mean(displacement) / t
@@ -22,7 +24,7 @@ def compute_average_velocity(points, t):
 
 def filter_points(points, threshold):
     """
-    threshold
+    Filter points based on a distance threshold.
     """
     distances = np.linalg.norm(points[1:] - points[:-1], axis=1)
     filtered_points = [points[0]]
@@ -31,41 +33,52 @@ def filter_points(points, threshold):
             filtered_points.append(points[i])
     return np.array(filtered_points)
 
+def visualize_point_cloud(points):
+    """
+    Visualize three-dimensional point cloud.
+    """
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(points[:, 0], points[:, 1], points[:, 2], marker='.')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    plt.show()
+
 def main():
-    # read
+    # Read point cloud data for different frames
     static_points_frame1 = read_point_cloud("static_points_frame1.txt")
     dynamic_points_frame1 = read_point_cloud("dynamic_points_frame1.txt")
     static_points_frame2 = read_point_cloud("static_points_frame2.txt")
     dynamic_points_frame2 = read_point_cloud("dynamic_points_frame2.txt")
 
-    # t
-    t = float(input("t: "))
-    # T
-    T = np.array([[float(x) for x in input().split(',')] for _ in range(3)])
-    # dynamic d
-    d = float(input("d: "))
-    # static d1
-    d1 = float(input("d1: "))
+    # Define time interval
+    t = float(input("Enter time interval (t): "))
 
-    # static velocity
+    # Compute average velocities
     v1 = compute_average_velocity(static_points_frame1, t)
-    # dynamic velocity
     v2 = compute_average_velocity(dynamic_points_frame1, t)
 
-    # threshold
+    # Calculate thresholds
     static_threshold = 0.5 * v1 * t
     dynamic_threshold = 0.5 * v2 * t
 
-    # convert
+    # Filter points based on thresholds
     transformed_static_points_frame2 = np.dot(static_points_frame2, T)
     transformed_dynamic_points_frame2 = np.dot(dynamic_points_frame2, T)
 
-    # filter
     filtered_static_points = filter_points(transformed_static_points_frame2, static_threshold)
     filtered_dynamic_points = filter_points(transformed_dynamic_points_frame2, dynamic_threshold)
 
-    print("static point number:", len(filtered_static_points))
-    print("dynamic point number:", len(filtered_dynamic_points))
+    # Accumulate filtered points to obtain enhanced points
+    enhanced_points = np.concatenate((filtered_static_points, filtered_dynamic_points))
+
+    # Save enhanced points to a specified folder in TXT format
+    np.savetxt('path/to/folder/enhanced_points.txt', enhanced_points, fmt='%f', delimiter=',')
+
+    # Visualize three-dimensional point cloud
+    visualize_point_cloud(enhanced_points)
 
 if __name__ == "__main__":
     main()
+
