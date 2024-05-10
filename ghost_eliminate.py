@@ -74,7 +74,7 @@ def main():
     enhanced_points = np.concatenate((filtered_static_points, filtered_dynamic_points))
 
     # Save enhanced points to a specified folder in TXT format
-    np.savetxt('path/to/folder/enhanced_points.txt', enhanced_points, fmt='%f', delimiter=',')
+    np.savetxt('enhanced_points.txt', enhanced_points, fmt='%f', delimiter=',')
 
     # Visualize three-dimensional point cloud
     visualize_point_cloud(enhanced_points)
