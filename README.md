@@ -45,7 +45,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py
   ```
-### 2. Dynamic visual-inertial 3D reconstruction, corresponds to Module 1 in this paper
+### 2. Dynamic visual-inertial 3D reconstruction
 * ```
   python dynamic_points.py
   ```
@@ -60,7 +60,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python main.py eval
   ```
-### 4. Point cloud refinement, corresponds to Module 2 in this paper
+### 4. Point cloud refinement
 * Place dense point clouds, vinsout, and infra1out into the `radar_pose/preprocess` folder and perform data preprocess
   ```
   cd mmEMP/radar_pose
@@ -82,6 +82,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python ghost_eliminate.py
   ```
+  After running, the enhanced three-dimensional coordinates of the radar point cloud will be obtained, and saved in a specified folder in TXT format.
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
