@@ -51,7 +51,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   This file models dynamic feature points, corresponding to Module 1 in the paper. After running, place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
 ### 3. Point cloud generation
-* Train a point cloud enhancement network by
+* Train the point cloud enhancement model by
   ```
   python main.py train
   ```
@@ -62,13 +62,13 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   The obtained dense point clouds will be saved in the `mmEMP/result` path.
 ### 4. Point cloud refinement
-* Place dense point clouds, vinsout, and infra1out into the `radar_pose/preprocess` folder and perform data preprocess
+* Place dense point clouds, vinsout, and infra1out (in dataset) into the `radar_pose/preprocess` folder and perform data preprocess
   ```
   cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
   where `$ROOT_DIR$` is the path of your dataset. The final scene flow samples will be saved under the `$SAVE_DIR$/flow_smp/`. 
-* Train a point cloud pose estimation network by
+* Train the point cloud pose estimation model by
   ```
   cd mmEMP/radar_pose
   python main.py --dataset_path $SAVE_DIR$ --exp_name $EXP_NAME$ --model cmflow
@@ -79,7 +79,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   cd mmEMP/radar_pose
   python main.py --eval --dataset_path $SAVE_DIR$ --exp_name $EXP_NAME$ --model cmflow
   ```
-* Enhance and filter point cloud
+* Eliminate ghost points
   ```
   python ghost_eliminate.py
   ```
