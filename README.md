@@ -17,9 +17,13 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   ```
   conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=11.0 -c pytorch
   ```
+* Clone the repository to local
+  ```
+  git clone https://github.com/bella-jy/mmEMP.git
+  ```
 * Install PointNet++ library for basic point cloud operation
   ```
-  cd radar_pose lib
+  cd mmEMP/radar_pose/lib
   python setup.py install
   cd ..
 ## Dataset
@@ -36,16 +40,12 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
     │   │── vinspointcloudout
   ```
 ## Getting started
-### 1. Clone the repository to local
+### 1. Temporal alignment
   ```
-  git clone https://github.com/bella-jy/mmEMP.git
-  ```
-### 2. Temporal alignment
-  ```
-  cd data/dataset/your_dataset
+  cd mmEMP/data/dataset/your_dataset
   python temporal_allignment.py
   ```
-### 3. Dynamic visual-inertial 3D reconstruction
+### 2. Dynamic visual-inertial 3D reconstruction
 * Data preprocess
   ```
   python dynamic_points.py
@@ -64,24 +64,24 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python main.py eval
   ```
-### 4. Point cloud refinement
+### 3. Point cloud refinement
 * Place dense point clouds, vinsout, and infra1out into the `pose/preprocess` folder and perform data preprocess
   ```
-  cd radar_pose
+  cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
 * Train
   
   Train a model by
   ```
-  cd radar_pose
+  cd mmEMP/radar_pose
   python main.py --dataset_path $DATA_PATH$ --exp_name $EXP_NAME$ --model cmflow
   ```
 * Eval
   
   Evaluate the trained model by
   ```
-  cd radar_pose
+  cd mmEMP/radar_pose
   python main.py --eval --dataset_path $DATA_PATH$ --exp_name cmflow_cvpr --model cmflow
   ```
 * Enhance and filter point clouds
