@@ -42,7 +42,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
 ### 1. Temporal alignment
   ```
   cd mmEMP/data/dataset/your_dataset
-  python temporal_allignment.py
+  python temporal_alignment.py
   ```
 ### 2. Dynamic visual-inertial 3D reconstruction
 * Data preprocess
