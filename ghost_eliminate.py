@@ -64,7 +64,6 @@ def main():
     filtered_static_points = filter_points(transformed_static_points_frame2, static_threshold)
     filtered_dynamic_points = filter_points(transformed_dynamic_points_frame2, dynamic_threshold)
 
-    # 打印结果或保存结果到文件等操作
     print("static point number:", len(filtered_static_points))
     print("dynamic point number:", len(filtered_dynamic_points))
 
