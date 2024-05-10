@@ -49,7 +49,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
 * ```
   python dynamic_points.py
   ```
-  This file can recover the positions of static feature points based on two consecutive input images, while compensating and reconstructing the positions of dynamic feature points through the construction of nonlinear equations. After running, place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
+  This file models dynamic feature points, corresponding to Module 1 in the paper. After running, place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
 ### 3. Point cloud generation
 * Train a point cloud enhancement network by
   ```
@@ -60,6 +60,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python main.py eval
   ```
+  The obtained dense point clouds will be saved in the `mmEMP/result` path.
 ### 4. Point cloud refinement
 * Place dense point clouds, vinsout, and infra1out into the `radar_pose/preprocess` folder and perform data preprocess
   ```
