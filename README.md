@@ -25,7 +25,6 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   ```
   cd mmEMP/radar_pose/lib
   python setup.py install
-  cd ..
 ## Dataset
 Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?pwd=52jk). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: `data/dataset/your_dataset`. In the end, the dataset should be oragnized like this:
   ```
