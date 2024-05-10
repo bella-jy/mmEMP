@@ -49,14 +49,14 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
 * ```
   python dynamic_points.py
   ```
-  Place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
+  This file can recover the positions of static feature points based on two consecutive input images, while compensating and reconstructing the positions of dynamic feature points through the construction of nonlinear equations. After running, place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
 ### 3. Point cloud generation
-* Train a model by
+* Train a point cloud enhancement network by
   ```
   python main.py train
   ```
   In `config/base_confige.yml`, you might want to change the following settings: `data` root path of the dataset for training or testing, `batch_size` for traning
-* Acquire dense point cloud
+* Obtain densified point clouds
   ```
   python main.py eval
   ```
@@ -67,13 +67,13 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
   where `$ROOT_DIR$` is the path of your dataset. The final scene flow samples will be saved under the `$SAVE_DIR$/flow_smp/`. 
-* Train a model by
+* Train a point cloud pose estimation network by
   ```
   cd mmEMP/radar_pose
   python main.py --dataset_path $SAVE_DIR$ --exp_name $EXP_NAME$ --model cmflow
   ```
   where `$EXP_NAME$` can be defined according to personal preferences.
-* Acquire radar pose
+* Estimate the pose between adjacent radar frames by extracting point cloud features and constructing motion probability maps
   ```
   cd mmEMP/radar_pose
   python main.py --eval --dataset_path $SAVE_DIR$ --exp_name $EXP_NAME$ --model cmflow
@@ -82,7 +82,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   python ghost_eliminate.py
   ```
-  After running, the enhanced three-dimensional coordinates of the radar point cloud will be obtained, and saved in a specified folder in TXT format.
+  After running, the enhanced three-dimensional coordinates of the radar point cloud will be obtained, and saved in a specified folder in .txt format.
 ## Citation
 If you find our work useful in your research, please consider citing:
   ```
