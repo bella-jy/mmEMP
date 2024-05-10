@@ -66,13 +66,13 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
   ```
-  where $ROOT_DIR$ is the path of your dataset. The final scene flow samples will be saved under the $SAVE_DIR$/flow_smp/. 
+  where `$ROOT_DIR$` is the path of your dataset. The final scene flow samples will be saved under the `$SAVE_DIR$/flow_smp/`. 
 * Train a model by
   ```
   cd mmEMP/radar_pose
   python main.py --dataset_path $SAVE_DIR$ --exp_name $EXP_NAME$ --model cmflow
   ```
-  where $EXP_NAME$ can be defined according to personal preferences.
+  where `$EXP_NAME$` can be defined according to personal preferences.
 * Acquire radar pose
   ```
   cd mmEMP/radar_pose
