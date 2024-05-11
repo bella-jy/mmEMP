@@ -141,6 +141,31 @@ def construct_overdetermined_equation(params, similar_rvecs, similar_tvecs, outl
             p1 - transform[:, 0].T, p1 + delta_d - transform[:, 0]) * (
                     np.dot(q4, q2) / (np.linalg.norm(q4) * np.linalg.norm(q2))))
     return residual
+def read_radar_point_cloud(file_path):
+    radar_points = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            data = line.strip().split(',')
+            point = [float(coord) for coord in data[:3]]  # 前三列是坐标
+            radar_points.append(point)
+    return np.array(radar_points)
+    
+def calculate_distance(point, matrix):
+    distances = np.linalg.norm(matrix - point, axis=1)
+    return distances
+
+def within_threshold(distances, threshold):
+    return any(distance <= threshold for distance in distances)
+
+def generate_labels(radar_points, combined_data, threshold):
+    labels = []
+    for radar_point in radar_points:
+        distances = calculate_distance(radar_point, combined_data)
+        if within_threshold(distances, threshold):
+            labels.append(1)
+        else:
+            labels.append(0)
+    return np.array(labels)
 
 image1 = cv2.imread('/path')
 image2 = cv2.imread('/path')
@@ -280,4 +305,15 @@ matrix_combined_data3 = stacked_array2.reshape(-1, 3)
 stacked_array3 = np.vstack(all_solution_delta_d)
 matrix_all_solution_delta_d = stacked_array3.reshape(-1, 3)
 
+def save_labels(labels, output_folder):
+    sio.savemat(os.path.join(output_folder, 'labels.mat'), {'labels': labels})
+radar_point_cloud = read_radar_point_cloud("/path/to/xyz")
 
+combined_data_sum = stacked_array1 + stacked_array2
+
+labels = generate_labels(radar_point_cloud, combined_data_sum, threshold=5)
+
+output_folder = "label"
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+save_labels(labels, output_folder)
