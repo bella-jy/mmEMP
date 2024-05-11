@@ -40,14 +40,14 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
 ## Getting started
 ### 1. Temporal alignment
-* Please align the data based on the timestamps provided by ROS using the following command.
+  Please align the data based on the timestamps provided by ROS using the following command.
   ```
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py <visual_folder_path> <radar_folder_path> <imu_folder_path>
   ```
   The aligned data will be saved in the `mmEMP/data/dataset/synced_data` path.
 ### 2. Dynamic visual-inertial 3D reconstruction
-* ```
+  ```
   python dynamic_points.py
   ```
   This is the implementation of dynamic 3D reconstruction algorithm, corresponding to our first design. Please using the synced data as input, and after running, the above command will generate label in `mmEMP/label` path, please place doppler_reshape_256_64_192 (in dataset) and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
