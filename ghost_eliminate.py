@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import scipy.io
 
 def read_point_cloud(file_path):
     """
@@ -51,7 +52,8 @@ def main():
     dynamic_points_frame1 = read_point_cloud("dynamic_points_frame1.txt")
     static_points_frame2 = read_point_cloud("static_points_frame2.txt")
     dynamic_points_frame2 = read_point_cloud("dynamic_points_frame2.txt")
-
+    mat_contents = scipy.io.loadmat('transform_matrix.mat')
+    T = mat_contents['T']
     # Define time interval
     t = float(input("Enter time interval (t): "))
 
@@ -81,4 +83,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
