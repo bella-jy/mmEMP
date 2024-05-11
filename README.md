@@ -48,7 +48,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   The aligned data will be saved in the `mmEMP/data/dataset/synced_data` path.
 ### 2. Dynamic visual-inertial 3D reconstruction
   ```
-  python dynamic_points.py
+ python dynamic_points.py --image1 /path/to/your/image1.jpg --image2 /path/to/your/image2.jpg --radar_data /path/to/your/radar_data.npy
   ```
   This is the implementation of dynamic 3D reconstruction algorithm, corresponding to our first design. Please using the synced data as input, and after running, the above command will generate label in `mmEMP/label` path, please place doppler_reshape_256_64_192 (in dataset) and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
 ### 3. Point cloud generation
