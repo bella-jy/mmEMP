@@ -26,7 +26,7 @@ Cong Fan, Shengkai Zhang, Kezhong Liu, Shuai Wang, Zheng Yang, Wei Wang
   cd mmEMP/radar_pose/lib
   python setup.py install
 ## Dataset
-Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?pwd=52jk). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: `data/dataset/your_dataset`. In the end, the dataset should be oragnized like this:
+Download the [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?pwd=52jk). The dataset comprises raw data from millimeter-wave radar, vision, and IMU, along with the output results of PC-side automatic VI-SLAM execution. Please make sure you have prepared the dataset by organizing the directory as: `data/dataset/your_dataset`. In the end, the dataset should be oragnized like this:
   ```
   Dataset
     ├── radar
@@ -63,8 +63,10 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   The obtained dense point clouds will be saved in the `mmEMP/result` path.
 ### 4. Point cloud refinement
-* Please move the densified point cloud and synchronized rgb and pose data to the `mmEMP/radar_pose/preprocess` path, to serve as the new data for subsequent processing.
+* Move the densified point cloud and synchronized rgb and pose data to the `mmEMP/radar_pose/preprocess` path, to serve as the new data for subsequent processing.
   ```
+  mv mmEMP/result/* mmEMP/radar_pose/preprocess
+  mv mmEMP/data/dataset/synced_data/{rgb,pose} mmEMP/radar_pose/preprocess/
   cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir /mmEMP/radar_pose/preprocess --save_dir $SAVE_DIR$
   ```
