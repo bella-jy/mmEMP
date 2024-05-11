@@ -170,20 +170,26 @@ def generate_labels(radar_points, combined_data, threshold):
 
 parser = argparse.ArgumentParser(description='Process images and radar data.')
 
-parser.add_argument('--image1', type=str, help='Path to the first image')
-parser.add_argument('--image2', type=str, help='Path to the second image')
-parser.add_argument('--radar_data', type=str, help='Path to the radar data file')
+parser.add_argument('--image_dir', type=str, help='Path to the directory containing consecutive pairs of images')
+parser.add_argument('--radar_dir', type=str, help='Path to the directory containing radar data files')
 
 args = parser.parse_args()
 
-image1_path = args.image1
-image2_path = args.image2
-radar_data_path = args.radar_data
+image_dir = args.image_dir
+radar_dir = args.radar_dir
 
-image1 = cv2.imread(image1_path)
-image2 = cv2.imread(image2_path)
-radar_point_cloud = read_radar_point_cloud(radar_data_path)
+image_files = sorted(os.listdir(image_dir))
+radar_files = sorted(os.listdir(radar_dir))
 
+for i in range(0, len(image_files), 2):
+    image1_path = os.path.join(image_dir, image_files[i])
+    image2_path = os.path.join(image_dir, image_files[i + 1])
+    radar_data_path = os.path.join(radar_dir, radar_files[i // 2])
+    
+    image1 = cv2.imread(image1_path)
+    image2 = cv2.imread(image2_path)
+    radar_point_cloud = read_radar_point_cloud(radar_data_path)
+    
 transform = T.Compose([T.ToTensor()])
 input1 = transform(image1).unsqueeze(0)
 input2 = transform(image2).unsqueeze(0)
