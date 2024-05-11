@@ -45,6 +45,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py <visual_folder_path> <radar_folder_path> <imu_folder_path>
   ```
+  The aligned data will be saved in the `mmEMP/data/dataset/synced_data` path.
 ### 2. Dynamic visual-inertial 3D reconstruction
 * ```
   python dynamic_points.py
