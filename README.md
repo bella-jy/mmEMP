@@ -49,7 +49,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
 * ```
   python dynamic_points.py
   ```
-  This file models dynamic feature points, corresponding to Module 1 in the paper. After running, place doppler_reshape_256_64_192 and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
+  This is the implementation of dynamic 3D reconstruction algorithm, corresponding to our first design. After running, the above command will generate label in `mmEMP/label` path, please place doppler_reshape_256_64_192 (in dataset) and the resulting label, respectively, under the paths `data/your_dataset/data` and `data/your_dataset/label`. E.g. `data/GTVINS2/data` and `data/GTVINS2/label`.
 ### 3. Point cloud generation
 * Train the point cloud enhancement model by
   ```
