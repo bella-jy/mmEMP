@@ -40,7 +40,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
 ## Getting started
 ### 1. Temporal alignment
-  Please align the data based on the timestamps provided by ROS using the following command.
+* Please align the data based on the timestamps provided by ROS using the following command.
   ```
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py <visual_folder_path> <radar_folder_path> <imu_folder_path>
