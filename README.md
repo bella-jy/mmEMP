@@ -65,8 +65,8 @@ Download the [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?pwd=52jk)
 ### 4. Point cloud refinement
 * Move the densified point cloud and synchronized rgb and pose data to the `mmEMP/radar_pose/preprocess` path, to serve as the new data for subsequent processing.
   ```
-  mv mmEMP/result/* mmEMP/radar_pose/preprocess
-  mv mmEMP/data/dataset/synced_data/{rgb,pose} mmEMP/radar_pose/preprocess/
+  cp mmEMP/result/* mmEMP/radar_pose/preprocess
+  cp mmEMP/data/dataset/synced_data/{rgb,pose} mmEMP/radar_pose/preprocess/
   cd mmEMP/radar_pose
   python preprocess/preprocess_vod.py --root_dir /mmEMP/radar_pose/preprocess --save_dir $SAVE_DIR$
   ```
