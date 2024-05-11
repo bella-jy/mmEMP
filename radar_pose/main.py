@@ -241,7 +241,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval', action='store_true')
     parser.add_argument('--vis', action = 'store_true')
     parser.add_argument('--save_res', action='store_true')
-    parser.add_argument('--dataset_path', type= str, default = 'mmEMP/data/dataset')
+    parser.add_argument('--dataset_path', type= str, default = 'mmEMP/radar_pose/preprocess')
     parser.add_argument('--exp_name', type = str, default = 'cmflow_cvpr')
     parser.add_argument('--model', type = str, default = 'cmflow')
     parser.add_argument('--dataset', type = str, default = 'vodDataset')
