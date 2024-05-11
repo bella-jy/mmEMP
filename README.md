@@ -63,12 +63,12 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
   The obtained dense point clouds will be saved in the `mmEMP/result` path.
 ### 4. Point cloud refinement
-* Place dense point clouds, vinsout, and infra1out (in dataset) into the `radar_pose/preprocess` folder and perform data preprocess
+* Please move the densified point cloud and synchronized rgb and pose data to the `mmEMP/radar_pose/preprocess` path, to serve as the new data for subsequent processing.
   ```
   cd mmEMP/radar_pose
-  python preprocess/preprocess_vod.py --root_dir $ROOT_DIR$ --save_dir $SAVE_DIR$
+  python preprocess/preprocess_vod.py --root_dir /mmEMP/radar_pose/preprocess --save_dir $SAVE_DIR$
   ```
-  where `$ROOT_DIR$` is the path of your dataset. The final scene flow samples will be saved under the `$SAVE_DIR$/flow_smp/`. 
+  The final scene flow samples will be saved under the `$SAVE_DIR$/flow_smp/`. 
 * Train the point cloud pose estimation model by
   ```
   cd mmEMP/radar_pose
