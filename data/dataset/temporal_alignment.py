@@ -1,4 +1,5 @@
 import os
+import sys
 
 def load_visual_data(folder):
     visual_data = {}
@@ -27,10 +28,12 @@ def load_imu_data(folder):
             imu_data[timestamp] = f.read()
     return imu_data
 
-# 加载三种传感器的数据
-visual_folder = '\path1'
-radar_folder = '\path2'
-imu_folder = '\path3'
+if len(sys.argv) != 4:
+    sys.exit(1)
+
+visual_folder = sys.argv[1]
+radar_folder = sys.argv[2]
+imu_folder = sys.argv[3]
 
 visual_data = load_visual_data(visual_folder)
 radar_data = load_radar_data(radar_folder)
@@ -52,9 +55,10 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 for timestamp, data in synced_data.items():
-    with open(os.path.join(output_folder, f"{timestamp}.txt"), 'w') as f:
-        f.write(f"Visual data: {data['visual']}\n")
-        f.write(f"Radar data: {data['radar']}\n")
-        f.write(f"IMU data: {data['imu']}\n")
+    with open(os.path.join(output_folder, f"{timestamp}_synced_data"), 'wb') as f:
+        f.write(data['visual'])
+        f.write(data['radar'])
+        f.write(data['imu'])
 
 print("finish.")
+
