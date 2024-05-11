@@ -40,7 +40,7 @@ Download the dataset [Dataset](https://pan.baidu.com/s/1KYOStoLnHUi-qyTsGuO3XQ?p
   ```
 ## Getting started
 ### 1. Temporal alignment
-  Due to the ambiguity in clock synchronization with ROS, we need to align the data based on timestamps.
+  Please align the data based on the timestamps provided by ROS using the following command.
   ```
   cd mmEMP/data/dataset/your_dataset
   python temporal_alignment.py
