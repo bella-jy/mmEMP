@@ -51,8 +51,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='preprocess')
-    parser.add_argument('--root_dir', type=str, default="/mnt/12T/fangqiang/view_of_delft/", help='Path for the origial dataset.')
-    parser.add_argument('--save_dir', type=str, default='/mnt/12T/fangqiang/preprocess_res/', help='Path for saving preprocessing results.')
+    parser.add_argument('--root_dir', type=str, default="/mmEMP/data/dataset/", help='Path for the origial dataset.')
+    parser.add_argument('--save_dir', type=str, default='/mmEMP/data/dataset/', help='Path for saving preprocessing results.')
     args = parser.parse_args()
     main(args)
 
