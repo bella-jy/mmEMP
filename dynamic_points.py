@@ -7,6 +7,7 @@ import torch
 import glob
 import torchvision.transforms as T
 from torchvision.models.detection import fasterrcnn_resnet50_fpn
+import argparse
 
 def extract_sift_features(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -167,8 +168,21 @@ def generate_labels(radar_points, combined_data, threshold):
             labels.append(0)
     return np.array(labels)
 
-image1 = cv2.imread('/path')
-image2 = cv2.imread('/path')
+parser = argparse.ArgumentParser(description='Process images and radar data.')
+
+parser.add_argument('--image1', type=str, help='Path to the first image')
+parser.add_argument('--image2', type=str, help='Path to the second image')
+parser.add_argument('--radar_data', type=str, help='Path to the radar data file')
+
+args = parser.parse_args()
+
+image1_path = args.image1
+image2_path = args.image2
+radar_data_path = args.radar_data
+
+image1 = cv2.imread(image1_path)
+image2 = cv2.imread(image2_path)
+radar_point_cloud = read_radar_point_cloud(radar_data_path)
 
 transform = T.Compose([T.ToTensor()])
 input1 = transform(image1).unsqueeze(0)
@@ -307,7 +321,6 @@ matrix_all_solution_delta_d = stacked_array3.reshape(-1, 3)
 
 def save_labels(labels, output_folder):
     sio.savemat(os.path.join(output_folder, 'labels.mat'), {'labels': labels})
-radar_point_cloud = read_radar_point_cloud("/path/to/xyz")
 
 combined_data_sum = stacked_array1 + stacked_array2
 
